@@ -18,6 +18,7 @@ public class Aplicacion extends javax.swing.JFrame {
      */
     public Aplicacion() {
         initComponents();
+        AccesoA.conectar();
         desactivaComponentes();
     }
 
@@ -151,12 +152,11 @@ public class Aplicacion extends javax.swing.JFrame {
     public void iniciarSesion()
     {
         String nombre = jTextFieldNombre.getText();
-        String contraseña = jTextFieldContraseña.getText();
+        int contraseña = Integer.parseInt(jTextFieldContraseña.getText());
         
-        String consulta1 = "select nombre from entrenador where nombre = '" + nombre +"'";
-        String consulta2 = "select contraseña from entrenador where contraseña = '" + contraseña + "'";
+        String consulta1 = "select * from entrenador where nombre = '" + nombre +"' and contraseña = " + contraseña;
         
-        if(AccesoA.consultaNombre(consulta1) && AccesoA.consultaContraseña(consulta2))
+        if(AccesoA.consultaInicial(consulta1) == true)
         {
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame,"Inicio de sesión realizado con exito.");  
@@ -167,11 +167,15 @@ public class Aplicacion extends javax.swing.JFrame {
             jLabelContraseña.setVisible(false);
             jTextFieldNombre.setVisible(false);
             jTextFieldContraseña.setVisible(false);
+            jButton.setVisible(false);
+            AccesoA.cerrar();
             
         }else
         {
              JFrame frame = new JFrame();
-             JOptionPane.showMessageDialog(frame,"Nombre o contraseña incorrectos.\nIntentalo de nuevo.");    
+             JOptionPane.showMessageDialog(frame,"Nombre o contraseña incorrectos.\nIntentalo de nuevo.");
+             jTextFieldNombre.setText("");
+             jTextFieldContraseña.setText("");
         }
     }
     

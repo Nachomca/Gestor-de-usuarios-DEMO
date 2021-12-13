@@ -12,46 +12,64 @@ import javax.swing.JOptionPane;
 
 public class AccesoA {
     
-    public static boolean consultaNombre(String consulta)
+    static Connection con; //global para que no se cierre en todo el programa hasta llamar a cerrar()
+    static Statement stmt; //global para que no se cierre en todo el programa hasta llamar a cerrar()
+    
+    public static void conectar()
     {
-        try
-        {
+        try{            
             System.out.println("Se va a conectar");
-            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/equipo","equipo","equipo");
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/equipo","equipo","equipo");
             System.out.println("Conectado");
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(consulta);
-            System.out.println("consulta hecha");
-            
-            rs.close();
-            stmt.close();
-            con.close();
-            
-            return true;
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                  ResultSet.CONCUR_READ_ONLY);
+            System.out.println("Statement creado");
             
         }catch(Exception e)
         {
+            System.out.println(e);
+        }
+    }
+    
+    public static boolean consultaInicial(String consulta)
+    {
+        try
+        {
+            ResultSet rs = stmt.executeQuery(consulta);
+            System.out.println("consulta hecha");
+            
+            if(rs.next())
+            {
+                rs.close();
+            
+                return true;
+            }
+            else
+            {
+                rs.close();
+                
+                return false;
+            }
+
+        }catch(Exception e)
+        {
+            System.out.println(e);
             return false;
         }
     }
     
-    public static boolean consultaContraseña(String consulta)
+    public static void cerrar()
     {
         try
         {
-            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/equipo","equipo","equipo");
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(consulta);
-            
-            rs.close();
             stmt.close();
             con.close();
             
-            return true;
+            System.out.println("Todo cerrado");
             
         }catch(Exception e)
         {
-            return false;
+            System.out.println(e);
         }
     }
     
