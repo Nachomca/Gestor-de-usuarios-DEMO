@@ -18,6 +18,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jSubMenuCerrarSesionActionPerformed"/>
+              </Events>
             </Menu>
           </SubComponents>
         </Menu>
@@ -25,6 +28,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver jugadores"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuLista1a1ActionPerformed"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuAlta">
           <Properties>
@@ -40,6 +46,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Acerca de"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAcercaDeActionPerformed"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>

@@ -11,7 +11,8 @@ import javax.swing.JOptionPane;
 
 public class Aplicacion extends javax.swing.JFrame {
 
-    static int bandera = 0; //bandera estatica que se activa cuando se inicie sesion
+    static int bandera = 0; //bandera estatica que se activa cuando se cierre sesión
+    static String nombreEntrenador; //para guardar el nombre del entrenador que se usa la aplicacion en ese momento
     
     /**
      * Creates new form Aplicacion
@@ -75,11 +76,21 @@ public class Aplicacion extends javax.swing.JFrame {
         jMenuUsuario.add(jSubMenuPerfil);
 
         jSubMenuCerrarSesion.setText("Cerrar sesión");
+        jSubMenuCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSubMenuCerrarSesionActionPerformed(evt);
+            }
+        });
         jMenuUsuario.add(jSubMenuCerrarSesion);
 
         jMenuBar1.add(jMenuUsuario);
 
         jMenuLista1a1.setText("Ver jugadores");
+        jMenuLista1a1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuLista1a1ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenuLista1a1);
 
         jMenuAlta.setText("Nueva convocatoria");
@@ -89,6 +100,11 @@ public class Aplicacion extends javax.swing.JFrame {
         jMenuBar1.add(jMenuJlist);
 
         jMenuAcercaDe.setText("Acerca de");
+        jMenuAcercaDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAcercaDeActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenuAcercaDe);
 
         setJMenuBar(jMenuBar1);
@@ -149,6 +165,23 @@ public class Aplicacion extends javax.swing.JFrame {
         iniciarSesion();
     }//GEN-LAST:event_jButtonActionPerformed
 
+    private void jSubMenuCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSubMenuCerrarSesionActionPerformed
+        cerrarSesion();	       
+    }//GEN-LAST:event_jSubMenuCerrarSesionActionPerformed
+
+    private void jMenuAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAcercaDeActionPerformed
+        JFrame frame = new JFrame();
+        JOptionPane.showMessageDialog(frame,"Acerca de:");
+    }//GEN-LAST:event_jMenuAcercaDeActionPerformed
+
+    private void jMenuLista1a1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLista1a1ActionPerformed
+        
+        pLista = new JPanelLista1a1();
+        this.setContentPane(pLista);   
+        //pLista.iniBotones();
+        pack();
+    }//GEN-LAST:event_jMenuLista1a1ActionPerformed
+
     public void iniciarSesion()
     {
         String nombre = jTextFieldNombre.getText();
@@ -159,7 +192,9 @@ public class Aplicacion extends javax.swing.JFrame {
         if(AccesoA.consultaInicial(consulta1) == true)
         {
             JFrame frame = new JFrame();
-            JOptionPane.showMessageDialog(frame,"Inicio de sesión realizado con exito.");  
+            JOptionPane.showMessageDialog(frame,"Inicio de sesión realizado con exito.");
+            
+            nombreEntrenador = nombre;
             
             jMenuBar1.setVisible(true);
             jLabel2.setVisible(false);
@@ -168,7 +203,6 @@ public class Aplicacion extends javax.swing.JFrame {
             jTextFieldNombre.setVisible(false);
             jTextFieldContraseña.setVisible(false);
             jButton.setVisible(false);
-            AccesoA.cerrar();
             
         }else
         {
@@ -177,6 +211,21 @@ public class Aplicacion extends javax.swing.JFrame {
              jTextFieldNombre.setText("");
              jTextFieldContraseña.setText("");
         }
+    }
+    
+    public void cerrarSesion()
+    {
+        JFrame frame = new JFrame();
+        JOptionPane.showMessageDialog(frame,"Se ha cerrado la sesión.");
+        
+        jMenuBar1.setVisible(false);
+        jLabel2.setVisible(true);
+        jLabelNombre.setVisible(true);
+        jLabelContraseña.setVisible(true);
+        jTextFieldNombre.setVisible(true);
+        jTextFieldContraseña.setVisible(true);
+        jButton.setVisible(true);
+        AccesoA.cerrar();
     }
     
     public void desactivaComponentes()
@@ -211,13 +260,18 @@ public class Aplicacion extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Aplicacion().setVisible(true);
             }
         });
+        
     }
+    
+    private Vista.JPanelLista1a1 pLista = new JPanelLista1a1();
+    private Vista.JPanelAltaConvocatoria pAlta = new JPanelAltaConvocatoria();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton;
@@ -237,3 +291,41 @@ public class Aplicacion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }
+
+/*
+import java.sql.*;
+public class EjemploAccesoBD8 {
+    public static void main(String[] args) {
+        Connection conexion = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+       conexion =
+       DriverManager.getConnection("jdbc:mysql://localhost/prueba?useServerPrepStmts=true", "root", "1daw");
+       PreparedStatement ps = conexion.prepareStatement("INSERT INTO contactos values (null,?,?,?)");                  
+           //Asigno al primer ? el String "Leopoldo".
+           //Corresponde al campo nombre de tipo VARCHAR
+            ps.setString(1, "Leopoldo");
+            // Asigno al segundo ? el String "Pelayo".
+            //Corresponde al campo apellidos de tipo VARCHAR
+            ps.setString(2, "Pelayo");
+            // Asigno al tercer ? el String "987876509".
+            //Corresponde al campo telefono de tipo VARCHAR
+            ps.setString(3, "999878765");
+            // Se ejecuta la operación.
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.toString());
+        } finally {
+            try {
+                if (conexion != null) {
+                    conexion.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.toString());
+            }
+        }
+    }
+}
+*/
