@@ -12,11 +12,15 @@ public class Jugador {
     private String nombre;
     private String apellido;
     private String foto;
-    private int sueldo;
+    private float sueldo;
     private Date fecha;
     private int dniEntrenador;
+    
+    public Jugador()
+    {
+    }
 
-    public Jugador(int numero, String nombre, String apellido, String foto, int sueldo, Date fecha, int dniEntrenador) {
+    public Jugador(int numero, String nombre, String apellido, String foto, float sueldo, Date fecha, int dniEntrenador) {
         this.numero = numero;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -58,11 +62,11 @@ public class Jugador {
         this.foto = foto;
     }
 
-    public int getSueldo() {
+    public float getSueldo() {
         return sueldo;
     }
 
-    public void setSueldo(int sueldo) {
+    public void setSueldo(float sueldo) {
         this.sueldo = sueldo;
     }
 

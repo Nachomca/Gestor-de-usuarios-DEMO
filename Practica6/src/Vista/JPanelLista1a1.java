@@ -4,17 +4,25 @@
  */
 package Vista;
 
+import Controlador.ControlLista1a1;
+import Modelo.Jugador;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Nacho
  */
 public class JPanelLista1a1 extends javax.swing.JPanel {
 
+    int dni;
     /**
      * Creates new form JPanelLista1a1
      */
-    public JPanelLista1a1() {
+    
+    public JPanelLista1a1(int dni) {
         initComponents();
+        this.dni = dni;
+        rellenaLista();
     }
 
     /**
@@ -46,6 +54,11 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
 
         jButtonSiguiente.setBackground(new java.awt.Color(0, 204, 204));
         jButtonSiguiente.setText("Siguiente");
+        jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSiguienteActionPerformed(evt);
+            }
+        });
 
         jButtonAnterior.setBackground(new java.awt.Color(0, 204, 204));
         jButtonAnterior.setText("Anterior");
@@ -139,6 +152,22 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setJtextField(Jugador jug)
+    {
+        jTextFieldNumero.setText(String.valueOf(jug.getNumero()));
+        jTextFieldApellido.setText(jug.getApellido());
+        jTextFieldNombre.setText(jug.getNombre());
+        jTextFieldFecha.setText(String.valueOf(jug.getFecha()));
+        jTextFieldSueldo.setText(String.valueOf(jug.getSueldo()));
+        //ImageIcon icon = new ImageIcon("src/fotos/"+jug.getFoto());
+        //jLabelFoto.setIcon(icon);
+    }
+    
+    private void rellenaLista()
+    {
+        Jugador jug = ControlLista1a1.primero(dni);
+        setJtextField(jug);
+    }
     private void jTextFieldApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldApellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldApellidoActionPerformed
@@ -146,6 +175,16 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
     private void jTextFieldSueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSueldoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSueldoActionPerformed
+
+    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
+        Jugador jug = ControlLista1a1.avanzar();
+        setJtextField(jug);
+        
+        if(ControlLista1a1.esUltimo())
+            jButtonSiguiente.setEnabled(false);
+            
+        jButtonAnterior.setEnabled(true);
+    }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

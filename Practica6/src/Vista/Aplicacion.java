@@ -1,3 +1,5 @@
+//18:12:21 - 19:45
+
 package Vista;
 
 import Controlador.AccesoA;
@@ -11,8 +13,8 @@ import javax.swing.JOptionPane;
 
 public class Aplicacion extends javax.swing.JFrame {
 
-    static int bandera = 0; //bandera estatica que se activa cuando se cierre sesión
-    static String nombreEntrenador; //para guardar el nombre del entrenador que se usa la aplicacion en ese momento
+    int bandera = 0; //bandera estatica que se activa cuando se cierre sesión
+    int dni;//para guardar el dni del entrenador
     
     /**
      * Creates new form Aplicacion
@@ -41,12 +43,15 @@ public class Aplicacion extends javax.swing.JFrame {
         jButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuUsuario = new javax.swing.JMenu();
-        jSubMenuPerfil = new javax.swing.JMenu();
-        jSubMenuCerrarSesion = new javax.swing.JMenu();
-        jMenuLista1a1 = new javax.swing.JMenu();
-        jMenuAlta = new javax.swing.JMenu();
-        jMenuJlist = new javax.swing.JMenu();
+        jMenuItemPerfil = new javax.swing.JMenuItem();
+        jMenuItemCerrarSesion = new javax.swing.JMenuItem();
+        jMenuOpciones = new javax.swing.JMenu();
+        jMenuItemLista1a1 = new javax.swing.JMenuItem();
+        jMenuItemAlta = new javax.swing.JMenuItem();
+        jMenuItemJList = new javax.swing.JMenuItem();
         jMenuAcercaDe = new javax.swing.JMenu();
+        jMenuNosotros = new javax.swing.JMenuItem();
+        jMenuItemAplicacion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,32 +77,41 @@ public class Aplicacion extends javax.swing.JFrame {
 
         jMenuUsuario.setText("Usuario");
 
-        jSubMenuPerfil.setText("Perfil");
-        jMenuUsuario.add(jSubMenuPerfil);
+        jMenuItemPerfil.setText("Perfil");
+        jMenuUsuario.add(jMenuItemPerfil);
 
-        jSubMenuCerrarSesion.setText("Cerrar sesión");
-        jSubMenuCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemCerrarSesion.setText("Cerrar sesión");
+        jMenuItemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jSubMenuCerrarSesionActionPerformed(evt);
+                jMenuItemCerrarSesionActionPerformed(evt);
             }
         });
-        jMenuUsuario.add(jSubMenuCerrarSesion);
+        jMenuUsuario.add(jMenuItemCerrarSesion);
 
         jMenuBar1.add(jMenuUsuario);
 
-        jMenuLista1a1.setText("Ver jugadores");
-        jMenuLista1a1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuOpciones.setText("Opciones");
+        jMenuOpciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuLista1a1ActionPerformed(evt);
+                jMenuOpcionesActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenuLista1a1);
 
-        jMenuAlta.setText("Nueva convocatoria");
-        jMenuBar1.add(jMenuAlta);
+        jMenuItemLista1a1.setText("Ver jugadores");
+        jMenuItemLista1a1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemLista1a1ActionPerformed(evt);
+            }
+        });
+        jMenuOpciones.add(jMenuItemLista1a1);
 
-        jMenuJlist.setText("Ver partidos");
-        jMenuBar1.add(jMenuJlist);
+        jMenuItemAlta.setText("Nueva convocatoria");
+        jMenuOpciones.add(jMenuItemAlta);
+
+        jMenuItemJList.setText("Ver partidos");
+        jMenuOpciones.add(jMenuItemJList);
+
+        jMenuBar1.add(jMenuOpciones);
 
         jMenuAcercaDe.setText("Acerca de");
         jMenuAcercaDe.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +119,13 @@ public class Aplicacion extends javax.swing.JFrame {
                 jMenuAcercaDeActionPerformed(evt);
             }
         });
+
+        jMenuNosotros.setText("Nosotros");
+        jMenuAcercaDe.add(jMenuNosotros);
+
+        jMenuItemAplicacion.setText("La aplicación");
+        jMenuAcercaDe.add(jMenuItemAplicacion);
+
         jMenuBar1.add(jMenuAcercaDe);
 
         setJMenuBar(jMenuBar1);
@@ -165,36 +186,40 @@ public class Aplicacion extends javax.swing.JFrame {
         iniciarSesion();
     }//GEN-LAST:event_jButtonActionPerformed
 
-    private void jSubMenuCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSubMenuCerrarSesionActionPerformed
-        cerrarSesion();	       
-    }//GEN-LAST:event_jSubMenuCerrarSesionActionPerformed
-
     private void jMenuAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAcercaDeActionPerformed
         JFrame frame = new JFrame();
         JOptionPane.showMessageDialog(frame,"Acerca de:");
     }//GEN-LAST:event_jMenuAcercaDeActionPerformed
 
-    private void jMenuLista1a1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLista1a1ActionPerformed
-        
-        pLista = new JPanelLista1a1();
-        this.setContentPane(pLista);   
+    private void jMenuOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuOpcionesActionPerformed
+
+    }//GEN-LAST:event_jMenuOpcionesActionPerformed
+
+    private void jMenuItemLista1a1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLista1a1ActionPerformed
+        pLista = new JPanelLista1a1(dni);
+        this.setContentPane(pLista);
         //pLista.iniBotones();
         pack();
-    }//GEN-LAST:event_jMenuLista1a1ActionPerformed
+    }//GEN-LAST:event_jMenuItemLista1a1ActionPerformed
+
+    private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
+        cerrarSesion();
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     public void iniciarSesion()
     {
         String nombre = jTextFieldNombre.getText();
-        int contraseña = Integer.parseInt(jTextFieldContraseña.getText());
+        String contraseña = jTextFieldContraseña.getText();
         
         String consulta1 = "select * from entrenador where nombre = '" + nombre +"' and contraseña = " + contraseña;
         
-        if(AccesoA.consultaInicial(consulta1) == true)
+        if(AccesoA.consultaInicial(nombre, contraseña) == true)
         {
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame,"Inicio de sesión realizado con exito.");
             
-            nombreEntrenador = nombre;
+            dni = AccesoA.sacarDni(nombre);
             
             jMenuBar1.setVisible(true);
             jLabel2.setVisible(false);
@@ -215,17 +240,10 @@ public class Aplicacion extends javax.swing.JFrame {
     
     public void cerrarSesion()
     {
+        AccesoA.cerrar();
+        
         JFrame frame = new JFrame();
         JOptionPane.showMessageDialog(frame,"Se ha cerrado la sesión.");
-        
-        jMenuBar1.setVisible(false);
-        jLabel2.setVisible(true);
-        jLabelNombre.setVisible(true);
-        jLabelContraseña.setVisible(true);
-        jTextFieldNombre.setVisible(true);
-        jTextFieldContraseña.setVisible(true);
-        jButton.setVisible(true);
-        AccesoA.cerrar();
     }
     
     public void desactivaComponentes()
@@ -270,8 +288,8 @@ public class Aplicacion extends javax.swing.JFrame {
         
     }
     
-    private Vista.JPanelLista1a1 pLista = new JPanelLista1a1();
-    private Vista.JPanelAltaConvocatoria pAlta = new JPanelAltaConvocatoria();
+    private Vista.JPanelLista1a1 pLista;
+    private Vista.JPanelAltaConvocatoria pAlta;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton;
@@ -280,13 +298,16 @@ public class Aplicacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelContraseña;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JMenu jMenuAcercaDe;
-    private javax.swing.JMenu jMenuAlta;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuJlist;
-    private javax.swing.JMenu jMenuLista1a1;
+    private javax.swing.JMenuItem jMenuItemAlta;
+    private javax.swing.JMenuItem jMenuItemAplicacion;
+    private javax.swing.JMenuItem jMenuItemCerrarSesion;
+    private javax.swing.JMenuItem jMenuItemJList;
+    private javax.swing.JMenuItem jMenuItemLista1a1;
+    private javax.swing.JMenuItem jMenuItemPerfil;
+    private javax.swing.JMenuItem jMenuNosotros;
+    private javax.swing.JMenu jMenuOpciones;
     private javax.swing.JMenu jMenuUsuario;
-    private javax.swing.JMenu jSubMenuCerrarSesion;
-    private javax.swing.JMenu jSubMenuPerfil;
     private javax.swing.JTextField jTextFieldContraseña;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
