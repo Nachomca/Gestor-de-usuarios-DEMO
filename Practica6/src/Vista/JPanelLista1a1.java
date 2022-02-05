@@ -47,6 +47,8 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
         jTextFieldApellido = new javax.swing.JTextField();
         jTextFieldSueldo = new javax.swing.JTextField();
         jTextFieldFecha = new javax.swing.JTextField();
+        jButtonPrimero = new javax.swing.JButton();
+        jButtonUltimo = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("JetBrains Mono", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 204, 204));
@@ -62,6 +64,11 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
 
         jButtonAnterior.setBackground(new java.awt.Color(0, 204, 204));
         jButtonAnterior.setText("Anterior");
+        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnteriorActionPerformed(evt);
+            }
+        });
 
         jLabelFoto.setText("Foto");
 
@@ -85,6 +92,22 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
             }
         });
 
+        jButtonPrimero.setBackground(new java.awt.Color(0, 204, 204));
+        jButtonPrimero.setText("Primero");
+        jButtonPrimero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrimeroActionPerformed(evt);
+            }
+        });
+
+        jButtonUltimo.setBackground(new java.awt.Color(0, 204, 204));
+        jButtonUltimo.setText("Último");
+        jButtonUltimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUltimoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,13 +121,6 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
                         .addComponent(jButtonSiguiente)
                         .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelFoto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(46, 46, 46)
-                        .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelFecha)
@@ -116,9 +132,22 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
                             .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                                .addComponent(jTextFieldFecha, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jTextFieldSueldo, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addGap(42, 42, 42))))
+                        .addGap(42, 42, 42))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelFoto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(46, 46, 46)
+                        .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jButtonPrimero)
+                .addGap(43, 43, 43)
+                .addComponent(jButtonUltimo)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +173,11 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFecha)
                     .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonPrimero)
+                    .addComponent(jButtonUltimo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSiguiente)
                     .addComponent(jButtonAnterior))
@@ -180,16 +213,42 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
         Jugador jug = ControlLista1a1.avanzar();
         setJtextField(jug);
         
-        if(ControlLista1a1.esUltimo())
-            jButtonSiguiente.setEnabled(false);
+        //if(ControlLista1a1.esUltimo())
+            //jButtonSiguiente.setEnabled(false);
             
         jButtonAnterior.setEnabled(true);
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
+    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
+        // TODO add your handling code here:
+        Jugador jug = ControlLista1a1.retroceder();
+        setJtextField(jug);
+        
+        jButtonSiguiente.setEnabled(true);
+    }//GEN-LAST:event_jButtonAnteriorActionPerformed
+
+    private void jButtonPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimeroActionPerformed
+        // TODO add your handling code here:
+        Jugador jug = ControlLista1a1.verPrimero();
+        setJtextField(jug);
+        
+        jButtonSiguiente.setEnabled(true);
+    }//GEN-LAST:event_jButtonPrimeroActionPerformed
+
+    private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimoActionPerformed
+        // TODO add your handling code here:
+        Jugador jug = ControlLista1a1.verUltimo();
+        setJtextField(jug);
+        
+        jButtonAnterior.setEnabled(true);
+    }//GEN-LAST:event_jButtonUltimoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnterior;
+    private javax.swing.JButton jButtonPrimero;
     private javax.swing.JButton jButtonSiguiente;
+    private javax.swing.JButton jButtonUltimo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelApellido;
     private javax.swing.JLabel jLabelFecha;
