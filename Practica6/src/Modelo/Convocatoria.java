@@ -50,5 +50,9 @@ public class Convocatoria {
         this.eurosPorPunto = eurosPorPunto;
     }
     
+    @Override
+    public String toString(){
+        return codigo+"/"+numeroJugador+"/"+codigoPartido+"/"+eurosPorPunto;
+    }
     
 }

@@ -22,6 +22,8 @@
                   <Group type="102" attributes="0">
                       <Component id="jButtonAnterior" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButtonAlineación" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jButtonSiguiente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
@@ -101,6 +103,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonSiguiente" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonAlineación" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
@@ -202,6 +205,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUltimoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonAlineaci&#xf3;n">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Alineaci&#xf3;n"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAlineaci&#xf3;nActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -95,6 +95,7 @@ public class AccesoA {
     {
         try
         {
+            ps.close();
             con.close();
             
             System.out.println("Todo cerrado");

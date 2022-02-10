@@ -7,6 +7,8 @@ package Vista;
 import Controlador.ControlLista1a1;
 import Modelo.Jugador;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +17,10 @@ import javax.swing.ImageIcon;
 public class JPanelLista1a1 extends javax.swing.JPanel {
 
     int dni;
+    
+    Jugador jug;
+            
+            
     /**
      * Creates new form JPanelLista1a1
      */
@@ -49,6 +55,7 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
         jTextFieldFecha = new javax.swing.JTextField();
         jButtonPrimero = new javax.swing.JButton();
         jButtonUltimo = new javax.swing.JButton();
+        jButtonAlineación = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("JetBrains Mono", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 204, 204));
@@ -108,6 +115,14 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
             }
         });
 
+        jButtonAlineación.setBackground(new java.awt.Color(0, 204, 204));
+        jButtonAlineación.setText("Alineación");
+        jButtonAlineación.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlineaciónActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,6 +133,8 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonAnterior)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAlineación)
+                        .addGap(27, 27, 27)
                         .addComponent(jButtonSiguiente)
                         .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
@@ -180,7 +197,8 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSiguiente)
-                    .addComponent(jButtonAnterior))
+                    .addComponent(jButtonAnterior)
+                    .addComponent(jButtonAlineación))
                 .addGap(22, 22, 22))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -198,7 +216,7 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
     
     private void rellenaLista()
     {
-        Jugador jug = ControlLista1a1.primero(dni);
+        jug = ControlLista1a1.primero(dni);
         setJtextField(jug);
     }
     private void jTextFieldApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldApellidoActionPerformed
@@ -210,7 +228,7 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFieldSueldoActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        Jugador jug = ControlLista1a1.avanzar();
+        jug = ControlLista1a1.avanzar();
         setJtextField(jug);
         
         //if(ControlLista1a1.esUltimo())
@@ -221,7 +239,7 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
         // TODO add your handling code here:
-        Jugador jug = ControlLista1a1.retroceder();
+        jug = ControlLista1a1.retroceder();
         setJtextField(jug);
         
         jButtonSiguiente.setEnabled(true);
@@ -229,7 +247,7 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
 
     private void jButtonPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimeroActionPerformed
         // TODO add your handling code here:
-        Jugador jug = ControlLista1a1.verPrimero();
+        jug = ControlLista1a1.verPrimero();
         setJtextField(jug);
         
         jButtonSiguiente.setEnabled(true);
@@ -237,14 +255,30 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
 
     private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimoActionPerformed
         // TODO add your handling code here:
-        Jugador jug = ControlLista1a1.verUltimo();
+        jug = ControlLista1a1.verUltimo();
         setJtextField(jug);
         
         jButtonAnterior.setEnabled(true);
     }//GEN-LAST:event_jButtonUltimoActionPerformed
 
+    private void jButtonAlineaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlineaciónActionPerformed
+        // TODO add your handling code here:
+         pJLista = new JPanelJList();
+//        this.setContentPane(pJLista);
+//        pack();
+        JFrame frame = new JFrame();
+        frame.setContentPane(pJLista);
+        pJLista.actualizaLista(jug.getNumero());
+        pJLista.rellenaJList();
+        pJLista.iniciarJList();
+        frame.pack();
+        frame.show();
+    }//GEN-LAST:event_jButtonAlineaciónActionPerformed
+    
+    private Vista.JPanelJList pJLista;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAlineación;
     private javax.swing.JButton jButtonAnterior;
     private javax.swing.JButton jButtonPrimero;
     private javax.swing.JButton jButtonSiguiente;
@@ -261,4 +295,5 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldNumero;
     private javax.swing.JTextField jTextFieldSueldo;
     // End of variables declaration//GEN-END:variables
+
 }

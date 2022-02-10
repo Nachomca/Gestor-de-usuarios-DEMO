@@ -10,7 +10,6 @@ import java.sql.*;
 
 public class ControlLista1a1 {
     
-    static Connection con;
     static Statement stmt;
     static ResultSet rs;
     
@@ -19,17 +18,13 @@ public class ControlLista1a1 {
         Jugador jug = new Jugador();
         
         try {
-            con = AccesoA.con;
-            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
+            stmt = AccesoA.con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
                                   ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery("Select * from jugador where dni_entrenador = " + dni);
             
             rs.next();
             jug = new Jugador(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getDate(6),rs.getInt(7));
 
-//            rs.close();
-//            stmt.close();
-//            con.close();
         }catch (Exception e) {
                 System.out.println(e);
             }
@@ -42,18 +37,10 @@ public class ControlLista1a1 {
         Jugador jug = new Jugador();
         
         try {
-//            con = AccesoA.con;
-//            Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
-//                                  ResultSet.CONCUR_READ_ONLY);
-//            ResultSet rs = stmt.executeQuery("Select * from jugador");
-
               rs.next();
 
               jug = new Jugador(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getDate(6),rs.getInt(7));
 
-//            rs.close();
-//            stmt.close();
-//            con.close();
         }catch (Exception e) {
                 System.out.println(e);
             }
@@ -67,18 +54,10 @@ public class ControlLista1a1 {
         Jugador jug = new Jugador();
         
         try {
-//            con = AccesoA.con;
-//            Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
-//                                  ResultSet.CONCUR_READ_ONLY);
-//            ResultSet rs = stmt.executeQuery("Select * from jugador");
-
-              rs.previous();
+             rs.previous();
 
               jug = new Jugador(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getDate(6),rs.getInt(7));
 
-//            rs.close();
-//            stmt.close();
-//            con.close();
         }catch (Exception e) {
                 System.out.println(e);
             }
@@ -91,18 +70,10 @@ public class ControlLista1a1 {
         Jugador jug = new Jugador();
         
         try {
-//            con = AccesoA.con;
-//            Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
-//                                  ResultSet.CONCUR_READ_ONLY);
-//            ResultSet rs = stmt.executeQuery("Select * from jugador");
-
               rs.last();
 
               jug = new Jugador(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getDate(6),rs.getInt(7));
 
-//            rs.close();
-//            stmt.close();
-//            con.close();
         }catch (Exception e) {
                 System.out.println(e);
             }
@@ -115,18 +86,10 @@ public class ControlLista1a1 {
         Jugador jug = new Jugador();
         
         try {
-//            con = AccesoA.con;
-//            Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
-//                                  ResultSet.CONCUR_READ_ONLY);
-//            ResultSet rs = stmt.executeQuery("Select * from jugador");
-
               rs.first();
 
               jug = new Jugador(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getDate(6),rs.getInt(7));
 
-//            rs.close();
-//            stmt.close();
-//            con.close();
         }catch (Exception e) {
                 System.out.println(e);
             }

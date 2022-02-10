@@ -44,6 +44,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nueva convocatoria"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAltaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemJList">
               <Properties>
@@ -103,8 +106,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jLabelContraseña" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="65" max="32767" attributes="0"/>
-                      <Component id="jTextFieldContraseña" min="-2" pref="110" max="-2" attributes="0"/>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
+                      <Component id="jPasswordField1" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jLabelNombre" min="-2" max="-2" attributes="0"/>
@@ -146,9 +149,9 @@
                   <Component id="jTextFieldNombre" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="17" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelContraseña" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldContraseña" alignment="1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelContraseña" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPasswordField1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton" min="-2" max="-2" attributes="0"/>
@@ -195,8 +198,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldNombre">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldContrase&#xf1;a">
-    </Component>
     <Component class="javax.swing.JButton" name="jButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
@@ -204,6 +205,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jPasswordField1">
     </Component>
   </SubComponents>
 </Form>

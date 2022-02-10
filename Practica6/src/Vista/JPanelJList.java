@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import Controlador.*;
+import Modelo.*;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -13,6 +16,8 @@ import javax.swing.JOptionPane;
  * @author Nacho
  */
 public class JPanelJList extends javax.swing.JPanel {
+    
+    private ArrayList <Convocatoria> list = new ArrayList<Convocatoria>();
 
     /**
      * Creates new form JPanelJList
@@ -21,47 +26,33 @@ public class JPanelJList extends javax.swing.JPanel {
         initComponents();
     }
     
+    public void actualizaLista(int num){
+        this.list=ControlJList.rellenaArray(num);
+    }
+    
     public void iniciarJList(){
         if(list.isEmpty()){//SI EL ARRAYLIST ESTÁ VACIO
             JFrame frame = new JFrame();
-            JOptionPane.showMessageDialog(frame,"AVISO. No hay ningún jugador registrado.");
+            JOptionPane.showMessageDialog(frame,"AVISO. No hay ninguna convocatoria registrada.");
         }
     }
     
-    private DefaultListModel modeloLista(int b)
+    private DefaultListModel modeloLista()
     {
-        if(b == 0)
+        DefaultListModel <Convocatoria> modelo = new DefaultListModel <Convocatoria>();
+
+
+        for(int i = 0; i < list.size(); i++ )
         {
-
-            DefaultListModel<Empleado> modelo = new DefaultListModel<Empleado>();
-
-
-            for(int i = 0; i < list.size(); i++ )
-            {
-                modelo.addElement(list.get(i));
-            }
-            return modelo;
-        }else
-        {
-
-            DefaultListModel<Empleado> modelo = new DefaultListModel<Empleado>();
-
-
-            for(int i = 0; i < listaux.size(); i++ )
-            {
-                modelo.addElement(listaux.get(i));
-            }
-
-            return modelo;
+            modelo.addElement(list.get(i));
         }
+        return modelo;
+        
     }
     
-    public void rellenaJList(int b)
+    public void rellenaJList()
     {
-        if(b == 0)
-            jList1.setModel(modeloLista(b));
-        else
-            jList1.setModel(modeloLista(b));
+        jList1.setModel(modeloLista());
     }
 
     /**

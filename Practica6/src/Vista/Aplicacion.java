@@ -39,8 +39,8 @@ public class Aplicacion extends javax.swing.JFrame {
         jLabelNombre = new javax.swing.JLabel();
         jLabelContraseña = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
-        jTextFieldContraseña = new javax.swing.JTextField();
         jButton = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuUsuario = new javax.swing.JMenu();
         jMenuItemPerfil = new javax.swing.JMenuItem();
@@ -106,6 +106,11 @@ public class Aplicacion extends javax.swing.JFrame {
         jMenuOpciones.add(jMenuItemLista1a1);
 
         jMenuItemAlta.setText("Nueva convocatoria");
+        jMenuItemAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAltaActionPerformed(evt);
+            }
+        });
         jMenuOpciones.add(jMenuItemAlta);
 
         jMenuItemJList.setText("Ver partidos");
@@ -139,8 +144,8 @@ public class Aplicacion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelContraseña)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                        .addComponent(jTextFieldContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -171,9 +176,9 @@ public class Aplicacion extends javax.swing.JFrame {
                     .addComponent(jLabelNombre)
                     .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelContraseña, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFieldContraseña, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelContraseña)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton)
                 .addGap(4, 4, 4))
@@ -207,10 +212,19 @@ public class Aplicacion extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
+    private void jMenuItemAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAltaActionPerformed
+        // TODO add your handling code here:
+        pAlta = new JPanelAltaConvocatoria();
+        this.setContentPane(pAlta);
+        //pLista.iniBotones();
+        pack();
+    }//GEN-LAST:event_jMenuItemAltaActionPerformed
+
     public void iniciarSesion()
     {
         String nombre = jTextFieldNombre.getText();
-        String contraseña = jTextFieldContraseña.getText();
+        //String contraseña = jTextFieldContraseña.getText();
+        String contraseña = jPasswordField1.getText();
         
         String consulta1 = "select * from entrenador where nombre = '" + nombre +"' and contraseña = " + contraseña;
         
@@ -226,15 +240,17 @@ public class Aplicacion extends javax.swing.JFrame {
             jLabelNombre.setVisible(false);
             jLabelContraseña.setVisible(false);
             jTextFieldNombre.setVisible(false);
-            jTextFieldContraseña.setVisible(false);
+            //jTextFieldContraseña.setVisible(false);
             jButton.setVisible(false);
+            jPasswordField1.setVisible(false);
             
         }else
         {
              JFrame frame = new JFrame();
              JOptionPane.showMessageDialog(frame,"Nombre o contraseña incorrectos.\nIntentalo de nuevo.");
              jTextFieldNombre.setText("");
-             jTextFieldContraseña.setText("");
+             //jTextFieldContraseña.setText("");
+             jPasswordField1.setText("");
         }
     }
     
@@ -249,6 +265,7 @@ public class Aplicacion extends javax.swing.JFrame {
     public void desactivaComponentes()
     {
         jMenuBar1.setVisible(false);
+        //jTextFieldContraseña.setVisible(false);
     }
     
     /**
@@ -308,7 +325,7 @@ public class Aplicacion extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuNosotros;
     private javax.swing.JMenu jMenuOpciones;
     private javax.swing.JMenu jMenuUsuario;
-    private javax.swing.JTextField jTextFieldContraseña;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }
