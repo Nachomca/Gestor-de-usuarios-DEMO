@@ -12,6 +12,9 @@ public class Partido {
     private String arbitro;
     private Date fecha;
     private int puntos;
+    
+    public Partido()
+    {}
 
     public Partido(int codigo, String arbitro, Date fecha, int puntos) {
         this.codigo = codigo;

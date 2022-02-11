@@ -4,17 +4,29 @@
  */
 package Vista;
 
+import Controlador.*;
+import Modelo.*;
+
 /**
  *
  * @author Nacho
  */
 public class JPanelAltaConvocatoria extends javax.swing.JPanel {
+    
+    int dni;
+    String apellido;
+    Jugador jug;
+    Partido par;
 
     /**
      * Creates new form JPanelAltaConvocatoria
      */
-    public JPanelAltaConvocatoria() {
+    
+    public JPanelAltaConvocatoria(int dni) {
         initComponents();
+        this.dni = dni;
+        InicializaComboBoxJugador();
+        InicializaComboBoxPartido();
     }
 
     /**
@@ -30,6 +42,8 @@ public class JPanelAltaConvocatoria extends javax.swing.JPanel {
         jLabelJugador = new javax.swing.JLabel();
         jLabelPartido = new javax.swing.JLabel();
         jButton = new javax.swing.JButton();
+        jComboBoxJugador = new javax.swing.JComboBox<>();
+        jComboBoxPartido = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("JetBrains Mono", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 204, 204));
@@ -40,6 +54,26 @@ public class JPanelAltaConvocatoria extends javax.swing.JPanel {
         jLabelPartido.setText("Selecciona un partido:");
 
         jButton.setText("Aceptar");
+        jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonActionPerformed(evt);
+            }
+        });
+
+        jComboBoxJugador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un apellido" }));
+        jComboBoxJugador.setSelectedIndex(0);
+        jComboBoxJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxJugadorActionPerformed(evt);
+            }
+        });
+
+        jComboBoxPartido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un partido", " " }));
+        jComboBoxPartido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPartidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -48,13 +82,17 @@ public class JPanelAltaConvocatoria extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelPartido)
-                            .addComponent(jLabelJugador)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(146, 146, 146)
-                        .addComponent(jButton)))
+                        .addComponent(jButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jComboBoxJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelJugador)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jComboBoxPartido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelPartido))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 106, Short.MAX_VALUE)
@@ -68,17 +106,60 @@ public class JPanelAltaConvocatoria extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelJugador)
-                .addGap(94, 94, 94)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBoxJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addComponent(jLabelPartido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBoxPartido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBoxJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxJugadorActionPerformed
+        // TODO add your handling code here:
+        apellido = jComboBoxJugador.getSelectedItem().toString();
+        jug = ControlAlta.sacarJugador(apellido);
+    }//GEN-LAST:event_jComboBoxJugadorActionPerformed
+
+    private void jComboBoxPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPartidoActionPerformed
+        // TODO add your handling code here:
+        String num = jComboBoxPartido.getSelectedItem().toString();
+        par = ControlAlta.sacarPartido(num);
+    }//GEN-LAST:event_jComboBoxPartidoActionPerformed
+
+    private void jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActionPerformed
+        // TODO add your handling code here:
+        int num = ControlAlta.sacarNumero(); //para sacar el numero de partidos
+        ControlAlta.nuevaConvocatoria((num+1000), jug.getNumero(), par.getCodigo());
+        System.out.println("Alta realizada");
+    }//GEN-LAST:event_jButtonActionPerformed
+
+    public  void InicializaComboBoxJugador(){
+          String [] apellidos = ControlAlta.ContarApellidos(dni);
+          
+          for(int i = 0; i<apellidos.length; i++){
+            jComboBoxJugador.addItem(apellidos[i]);
+          }
+    }
+    
+    public  void InicializaComboBoxPartido(){
+          int [] numeros = new int[3];
+          numeros[0] = 1;
+          numeros[1] = 2;
+          numeros[2] = 3;
+          
+          for(int i = 0; i<numeros.length; i++){
+            jComboBoxPartido.addItem(String.valueOf(numeros[i]));
+          }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton;
+    private javax.swing.JComboBox<String> jComboBoxJugador;
+    private javax.swing.JComboBox<String> jComboBoxPartido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelJugador;
     private javax.swing.JLabel jLabelPartido;

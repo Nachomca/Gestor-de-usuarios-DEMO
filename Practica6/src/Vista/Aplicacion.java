@@ -78,6 +78,11 @@ public class Aplicacion extends javax.swing.JFrame {
         jMenuUsuario.setText("Usuario");
 
         jMenuItemPerfil.setText("Perfil");
+        jMenuItemPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPerfilActionPerformed(evt);
+            }
+        });
         jMenuUsuario.add(jMenuItemPerfil);
 
         jMenuItemCerrarSesion.setText("Cerrar sesión");
@@ -214,11 +219,19 @@ public class Aplicacion extends javax.swing.JFrame {
 
     private void jMenuItemAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAltaActionPerformed
         // TODO add your handling code here:
-        pAlta = new JPanelAltaConvocatoria();
+        pAlta = new JPanelAltaConvocatoria(dni);
         this.setContentPane(pAlta);
         //pLista.iniBotones();
         pack();
     }//GEN-LAST:event_jMenuItemAltaActionPerformed
+
+    private void jMenuItemPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPerfilActionPerformed
+        // TODO add your handling code here:
+        pPerfil = new JPanelPerfil(dni);
+        this.setContentPane(pPerfil);
+        //pLista.iniBotones();
+        pack();
+    }//GEN-LAST:event_jMenuItemPerfilActionPerformed
 
     public void iniciarSesion()
     {
@@ -307,6 +320,7 @@ public class Aplicacion extends javax.swing.JFrame {
     
     private Vista.JPanelLista1a1 pLista;
     private Vista.JPanelAltaConvocatoria pAlta;
+    private Vista.JPanelPerfil pPerfil;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton;

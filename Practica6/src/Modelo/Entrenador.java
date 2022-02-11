@@ -15,6 +15,9 @@ public class Entrenador {
     private Date fecha;
     private int sueldo;
     private int contraseña;
+    
+    public Entrenador()
+    {}
 
     public Entrenador(int dni, String nombre, String apellido, String foto, Date fecha, int sueldo, int contraseña) {
         this.dni = dni;
