@@ -29,6 +29,7 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
         initComponents();
         this.dni = dni;
         rellenaLista();
+        inibotones();
     }
 
     /**
@@ -76,8 +77,6 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
                 jButtonAnteriorActionPerformed(evt);
             }
         });
-
-        jLabelFoto.setText("Foto");
 
         jLabelNombre.setText("Nombre");
 
@@ -129,14 +128,13 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonAnterior)
+                        .addComponent(jLabelFoto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonAlineación)
-                        .addGap(27, 27, 27)
-                        .addComponent(jButtonSiguiente)
-                        .addGap(32, 32, 32))
+                        .addComponent(jLabel1)
+                        .addGap(78, 78, 78)
+                        .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,31 +148,38 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
                             .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextFieldFecha, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextFieldSueldo, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addGap(42, 42, 42))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelFoto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(46, 46, 46)
-                        .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))))
+                                .addComponent(jTextFieldSueldo, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                .addGap(42, 42, 42))
             .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(144, 144, 144)
                 .addComponent(jButtonPrimero)
-                .addGap(43, 43, 43)
+                .addGap(136, 136, 136)
                 .addComponent(jButtonUltimo)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jButtonAnterior)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addComponent(jButtonAlineación)
+                .addGap(109, 109, 109)
+                .addComponent(jButtonSiguiente)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(32, 32, 32)
+                            .addComponent(jLabel1))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabelFoto)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre)
                     .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -190,11 +195,11 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFecha)
                     .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonPrimero)
                     .addComponent(jButtonUltimo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSiguiente)
                     .addComponent(jButtonAnterior)
@@ -203,6 +208,12 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void inibotones()
+    {
+        jButtonAnterior.setEnabled(false);
+        jButtonPrimero.setEnabled(false);
+    }
+    
     private void setJtextField(Jugador jug)
     {
         jTextFieldNumero.setText(String.valueOf(jug.getNumero()));
@@ -210,8 +221,8 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
         jTextFieldNombre.setText(jug.getNombre());
         jTextFieldFecha.setText(String.valueOf(jug.getFecha()));
         jTextFieldSueldo.setText(String.valueOf(jug.getSueldo()));
-        //ImageIcon icon = new ImageIcon("src/fotos/"+jug.getFoto());
-        //jLabelFoto.setIcon(icon);
+        ImageIcon icon = new ImageIcon("src/Fotos/"+jug.getFoto());
+        jLabelFoto.setIcon(icon);
     }
     
     private void rellenaLista()
@@ -235,6 +246,13 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
             //jButtonSiguiente.setEnabled(false);
             
         jButtonAnterior.setEnabled(true);
+        jButtonPrimero.setEnabled(true);
+        
+        if(ControlLista1a1.esUltimo())
+        {
+            jButtonSiguiente.setEnabled(false);
+            jButtonUltimo.setEnabled(false);
+        }
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
@@ -243,6 +261,13 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
         setJtextField(jug);
         
         jButtonSiguiente.setEnabled(true);
+        jButtonUltimo.setEnabled(true);
+        
+        if(ControlLista1a1.esPrimero())
+        {
+            jButtonAnterior.setEnabled(false);
+            jButtonPrimero.setEnabled(false);
+        }
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimeroActionPerformed
@@ -251,6 +276,9 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
         setJtextField(jug);
         
         jButtonSiguiente.setEnabled(true);
+        jButtonUltimo.setEnabled(true);
+        jButtonPrimero.setEnabled(false);
+        jButtonAnterior.setEnabled(false);
     }//GEN-LAST:event_jButtonPrimeroActionPerformed
 
     private void jButtonUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUltimoActionPerformed
@@ -259,6 +287,9 @@ public class JPanelLista1a1 extends javax.swing.JPanel {
         setJtextField(jug);
         
         jButtonAnterior.setEnabled(true);
+        jButtonPrimero.setEnabled(true);
+        jButtonUltimo.setEnabled(false);
+        jButtonSiguiente.setEnabled(false);
     }//GEN-LAST:event_jButtonUltimoActionPerformed
 
     private void jButtonAlineaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlineaciónActionPerformed

@@ -7,6 +7,8 @@ package Controlador;
 import Modelo.*;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;  
+import java.util.Date; 
 
 /**
  *
@@ -38,6 +40,82 @@ public class ControlPerfil {
         }
         
         return ent;
+    }
+    
+    public static void modificarNombre(int dni, String nombre)
+    {
+        try {
+            stmt = AccesoA.con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                  ResultSet.CONCUR_READ_ONLY);
+            
+            int otro = stmt.executeUpdate("Update entrenador set nombre = '"+ nombre +"' where dni = " + dni);
+            
+            //rs.next();
+
+//            rs.close();
+//            stmt.close();
+            
+        }catch (Exception e) {
+                System.out.println(e);
+        }
+    }
+    
+    public static void modificarApellido(int dni, String apellido)
+    {
+        try {
+            stmt = AccesoA.con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                  ResultSet.CONCUR_READ_ONLY);
+            
+            int otro = stmt.executeUpdate("Update entrenador set apellido = '"+ apellido +"' where dni = " + dni);
+            
+            //rs.next();
+
+//            rs.close();
+//            stmt.close();
+            
+        }catch (Exception e) {
+                System.out.println(e);
+        }
+    }
+    
+    public static void modificarFecha(int dni, String fec) throws Exception
+    {
+         Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(fec);
+        
+        try {
+            stmt = AccesoA.con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                  ResultSet.CONCUR_READ_ONLY);
+            
+            int otro = stmt.executeUpdate("Update entrenador set fecha = '"+ fecha +"' where dni = " + dni);
+            
+            //rs.next();
+
+//            rs.close();
+//            stmt.close();
+            
+        }catch (Exception e) {
+                System.out.println(e);
+        }
+    }
+    
+    public static void modificarSueldo(int dni, String suel)
+    {
+        int sueldo = Integer.parseInt(suel);
+        
+        try {
+            stmt = AccesoA.con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                  ResultSet.CONCUR_READ_ONLY);
+            
+            int otro = stmt.executeUpdate("Update entrenador set nombre = "+ sueldo +" where dni = " + dni);
+            
+            //rs.next();
+
+//            rs.close();
+//            stmt.close();
+            
+        }catch (Exception e) {
+                System.out.println(e);
+        }
     }
     
 }

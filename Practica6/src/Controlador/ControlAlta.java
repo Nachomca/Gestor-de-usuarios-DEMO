@@ -130,9 +130,9 @@ public class ControlAlta {
             Statement stmt = AccesoA.con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
                                   ResultSet.CONCUR_READ_ONLY);
             
-            ResultSet rs = stmt.executeQuery("insert into convocatorias values ("+num+ "," + numJug + "," + codPar + ", 10)");
+            int otro = stmt.executeUpdate("insert into convocatorias values ("+num+ "," + numJug + "," + codPar + ", 10)");
             
-            rs = stmt.executeQuery("Select * from convocatorias where codigo = " + num);
+            ResultSet rs = stmt.executeQuery("Select * from convocatorias where codigo = " + num);
             
             rs.next();
             

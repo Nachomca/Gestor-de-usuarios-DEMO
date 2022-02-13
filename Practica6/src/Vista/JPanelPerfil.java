@@ -6,6 +6,8 @@ package Vista;
 
 import Controlador.*;
 import Modelo.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -54,8 +56,6 @@ public class JPanelPerfil extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(0, 204, 204));
         jLabel1.setText("Perfil de entrenador");
 
-        jLabelFoto.setText("foto");
-
         jLabelDni.setText("DNI:");
 
         jLabelNombre.setText("Nombre");
@@ -67,6 +67,11 @@ public class JPanelPerfil extends javax.swing.JPanel {
         jLabelFecha.setText("Fecha");
 
         jButton1.setText("Modificar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -140,6 +145,15 @@ public class JPanelPerfil extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        pModificar = new JPanelModificar(ent, dni);
+        JFrame frame = new JFrame();
+        frame.setContentPane(pModificar);
+        frame.pack();
+        frame.show();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void setJtextField(Entrenador jug)
     {
         jTextFieldDni.setText(String.valueOf(jug.getDni()));
@@ -147,8 +161,8 @@ public class JPanelPerfil extends javax.swing.JPanel {
         jTextFieldNombre.setText(jug.getNombre());
         jTextFieldFecha.setText(String.valueOf(jug.getFecha()));
         jTextFieldSueldo.setText(String.valueOf(jug.getSueldo()));
-        //ImageIcon icon = new ImageIcon("src/fotos/"+jug.getFoto());
-        //jLabelFoto.setIcon(icon);
+        ImageIcon icon = new ImageIcon("src/Fotos/"+jug.getFoto());
+        jLabelFoto.setIcon(icon);
     }
     
     public void rellenaPerfil()
@@ -156,6 +170,8 @@ public class JPanelPerfil extends javax.swing.JPanel {
         ent = ControlPerfil.sacarEntrenador(dni);
         setJtextField(ent);
     }
+    
+    private Vista.JPanelModificar pModificar;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

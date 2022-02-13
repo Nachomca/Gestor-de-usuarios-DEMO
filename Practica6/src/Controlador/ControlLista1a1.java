@@ -100,14 +100,23 @@ public class ControlLista1a1 {
     public static boolean esUltimo()
     {
         try {
-              ResultSet rsaux = rs;
               
-              rsaux.next();
-              
-              if(rsaux.isLast())
+              if(rs.isLast())
                   return true;
-
-              rsaux.close();
+              
+        }catch (Exception e) {
+                System.out.println(e);
+            }
+        
+        return false;
+    }
+    
+    public static boolean esPrimero()
+    {
+        try {
+              
+              if(rs.isFirst())
+                  return true;
               
         }catch (Exception e) {
                 System.out.println(e);

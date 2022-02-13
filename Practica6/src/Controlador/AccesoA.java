@@ -18,12 +18,12 @@ public class AccesoA {
     public static void conectar()
     {
         try{            
-            System.out.println("Se va a conectar");
+            //System.out.println("Se va a conectar");
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/equipo","equipo","equipo");
-            System.out.println("Conectado");
+            //System.out.println("Conectado");
 //            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
 //                                  ResultSet.CONCUR_READ_ONLY);
-            System.out.println("Statement creado");
+            //System.out.println("Statement creado");
             
         }catch(Exception e)
         {
@@ -78,7 +78,7 @@ public class AccesoA {
             
             dni = rs.getInt(1);
 
-            System.out.println(dni);
+            //System.out.println(dni);
             
             rs.close();
             stmt.close();
@@ -98,7 +98,7 @@ public class AccesoA {
             ps.close();
             con.close();
             
-            System.out.println("Todo cerrado");
+            //System.out.println("Todo cerrado");
             
         }catch(Exception e)
         {

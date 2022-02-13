@@ -114,9 +114,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelFoto">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="foto"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelDni">
       <Properties>
@@ -149,6 +146,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldNombre">
     </Component>

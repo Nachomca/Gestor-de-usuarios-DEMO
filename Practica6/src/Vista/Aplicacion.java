@@ -131,9 +131,19 @@ public class Aplicacion extends javax.swing.JFrame {
         });
 
         jMenuNosotros.setText("Nosotros");
+        jMenuNosotros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuNosotrosActionPerformed(evt);
+            }
+        });
         jMenuAcercaDe.add(jMenuNosotros);
 
         jMenuItemAplicacion.setText("La aplicación");
+        jMenuItemAplicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAplicacionActionPerformed(evt);
+            }
+        });
         jMenuAcercaDe.add(jMenuItemAplicacion);
 
         jMenuBar1.add(jMenuAcercaDe);
@@ -145,48 +155,51 @@ public class Aplicacion extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelContraseña)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelContraseña)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(74, 74, 74))
+                        .addGap(21, 21, 21)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(112, 112, 112))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel2))
+                        .addGap(245, 245, 245)
+                        .addComponent(jButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jButton)))
+                        .addGap(200, 200, 200)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel2))
+                            .addComponent(jLabel1))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel1)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNombre)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelContraseña)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelNombre)
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabelContraseña)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jButton)
-                .addGap(4, 4, 4))
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -197,8 +210,7 @@ public class Aplicacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonActionPerformed
 
     private void jMenuAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAcercaDeActionPerformed
-        JFrame frame = new JFrame();
-        JOptionPane.showMessageDialog(frame,"Acerca de:");
+        
     }//GEN-LAST:event_jMenuAcercaDeActionPerformed
 
     private void jMenuOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuOpcionesActionPerformed
@@ -232,6 +244,18 @@ public class Aplicacion extends javax.swing.JFrame {
         //pLista.iniBotones();
         pack();
     }//GEN-LAST:event_jMenuItemPerfilActionPerformed
+
+    private void jMenuNosotrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNosotrosActionPerformed
+        // TODO add your handling code here:
+        JFrame frame = new JFrame();
+        JOptionPane.showMessageDialog(frame,"App realizada por Ignacio Martínez de Carvajal Andrés.");
+    }//GEN-LAST:event_jMenuNosotrosActionPerformed
+
+    private void jMenuItemAplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAplicacionActionPerformed
+        // TODO add your handling code here:
+        JFrame frame = new JFrame();
+        JOptionPane.showMessageDialog(frame,"App de gestión de plantilla de entrenadores de baloncesto.");
+    }//GEN-LAST:event_jMenuItemAplicacionActionPerformed
 
     public void iniciarSesion()
     {
