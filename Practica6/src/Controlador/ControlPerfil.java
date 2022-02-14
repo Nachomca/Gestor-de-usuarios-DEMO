@@ -118,4 +118,22 @@ public class ControlPerfil {
         }
     }
     
+     public static void modificarFoto(int dni, String foto)
+    {      
+        try {
+            stmt = AccesoA.con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                                  ResultSet.CONCUR_READ_ONLY);
+            
+            int otro = stmt.executeUpdate("Update entrenador set foto = '"+ foto +"' where dni = " + dni);
+            
+            //rs.next();
+
+//            rs.close();
+//            stmt.close();
+            
+        }catch (Exception e) {
+                System.out.println(e);
+        }
+    }
+    
 }
